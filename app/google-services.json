@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "980897682524",
+    "project_id": "athena-74dcd",
+    "storage_bucket": "athena-74dcd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980897682524:android:918703323098c54bcbc299",
+        "android_client_info": {
+          "package_name": "com.example.WomenSafty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-P4AMI4L3EGVJmHTubkFkEJAk9xMQJ3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
