@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- Emergency Contacts -->
+        <Button
+            android:id="@+id/btnManageContacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contacts"
+            android:layout_marginTop="12dp" />
+
+        <!-- Personal Profile -->
+        <Button
+            android:id="@+id/btnProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Notification Preferences -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enable Notifications"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Privacy & Location Sharing -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchLocations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share Location in SOS"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Permission Settings Section -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permissions"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchCameraPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Camera Access"
+            android:layout_marginTop="12dp"/>
+
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share Location in SOS"
+            android:layout_marginTop="12dp"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchMicrophonePermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Microphone Access"
+            android:layout_marginTop="12dp"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchContactsPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contacts Access"
+            android:layout_marginTop="12dp"/>
+
+        <!-- App Theme -->
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+            <RadioButton
+                android:id="@+id/radioLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Light"/>
+            <RadioButton
+                android:id="@+id/radioDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dark"/>
+        </RadioGroup>
+
+        <!-- Language -->
+
+        <Button
+            android:id="@+id/btnConnectWearable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connect Wearable"
+            android:layout_marginTop="12dp"/>
+        <!-- Help & Support -->
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Help &amp; Support"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Security Options -->
+        <Button
+            android:id="@+id/btnSecurity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Security (Lock App)"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -3,23 +3,16 @@ package com.example.WomenSafty;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.FileOutputStream;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -27,17 +20,10 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private TextView tvLoginLink;
 
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-        // Initialize Firebase Auth & Firestore
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
 
         initializeViews();
         setupClickListeners();
@@ -67,53 +53,54 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (!validateInputs(name, email, password, phone, emergency)) return;
 
-        // Create Firebase Auth user
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        saveUserToFirestore(name, email, phone, emergency);
-                    } else {
-                        String errorMsg = task.getException() != null ?
-                                task.getException().getMessage() : "Registration failed";
-                        Toast.makeText(RegisterActivity.this,
-                                "Registration failed: " + errorMsg, Toast.LENGTH_LONG).show();
-                    }
-                });
+        // Save data locally
+        if (saveUserToLocalFile(name, email, password, phone, emergency)) {
+            Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+            navigateToLogin();
+        } else {
+            Toast.makeText(this, "Failed to save user data", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean validateInputs(String name, String email, String password, String phone, String emergency) {
-        if (TextUtils.isEmpty(name)) { etName.setError("Name required"); etName.requestFocus(); return false; }
-        if (TextUtils.isEmpty(email)) { etEmail.setError("Email required"); etEmail.requestFocus(); return false; }
+        if (TextUtils.isEmpty(name)) {
+            etName.setError("Name required"); etName.requestFocus(); return false;
+        }
+        if (TextUtils.isEmpty(email)) {
+            etEmail.setError("Email required"); etEmail.requestFocus(); return false;
+        }
         if (TextUtils.isEmpty(password) || password.length() < 6) {
             etPassword.setError("Password must be at least 6 chars");
             etPassword.requestFocus();
             return false;
         }
-        if (TextUtils.isEmpty(phone)) { etPhone.setError("Phone required"); etPhone.requestFocus(); return false; }
-        if (TextUtils.isEmpty(emergency)) { etEmergencyContact.setError("Emergency contact required"); etEmergencyContact.requestFocus(); return false; }
+        if (TextUtils.isEmpty(phone)) {
+            etPhone.setError("Phone required"); etPhone.requestFocus(); return false;
+        }
+        if (TextUtils.isEmpty(emergency)) {
+            etEmergencyContact.setError("Emergency contact required"); etEmergencyContact.requestFocus(); return false;
+        }
         return true;
     }
 
-    private void saveUserToFirestore(String name, String email, String phone, String emergency) {
-        String uid = mAuth.getCurrentUser().getUid();
+    private boolean saveUserToLocalFile(String name, String email, String password, String phone, String emergency) {
+        try {
+            JSONObject userJson = new JSONObject();
+            userJson.put("name", name);
+            userJson.put("email", email);
+            userJson.put("password", password); // optionally encrypt or hash password in real app
+            userJson.put("phone", phone);
+            userJson.put("emergencyContact", emergency);
 
-        Map<String, Object> userMap = new HashMap<>();
-        userMap.put("name", name);
-        userMap.put("email", email);
-        userMap.put("phone", phone);
-        userMap.put("emergencyContact", emergency);
-
-        db.collection("users").document(uid)
-                .set(userMap)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                        navigateToLogin();
-                    } else {
-                        if (mAuth.getCurrentUser() != null) mAuth.getCurrentUser().delete();
-                        Toast.makeText(RegisterActivity.this, "Failed to save user info. Try again.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            String filename = "user_data.txt";
+            FileOutputStream fos = openFileOutput(filename, MODE_PRIVATE);
+            fos.write(userJson.toString().getBytes());
+            fos.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void navigateToLogin() {

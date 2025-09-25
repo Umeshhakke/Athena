@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
+    android:gravity="center"
     android:background="#F5F5F5">
 
     <!-- App Title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:text="Athena"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="#000000"
+        android:textColor="#FF4081"
         android:layout_marginBottom="32dp" />
 
     <!-- Email Input -->
@@ -22,15 +23,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:hint="Email / Phone">
+        android:hint="Email / Phone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="#FF4081">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:padding="12dp" />
-
+            android:inputType="textEmailAddress|text"
+            android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Password Input -->
@@ -39,34 +45,43 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:hint="Password"
-        app:passwordToggleEnabled="true">
+        app:endIconMode="password_toggle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxStrokeColor="#FF4081">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:padding="12dp" />
-
+            android:padding="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Login Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Login"
+        android:textAllCaps="false"
+        app:cornerRadius="28dp"
         android:backgroundTint="#FF4081"
-        android:textColor="#FFFFFF"
+        android:textColor="@android:color/white"
         android:layout_marginBottom="16dp" />
 
     <!-- Register Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Register"
+        android:textAllCaps="false"
+        app:cornerRadius="28dp"
         android:backgroundTint="#3F51B5"
-        android:textColor="#FFFFFF" />
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

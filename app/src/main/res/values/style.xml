@@ -1,0 +1,24 @@
+<resources>
+    <!-- App Theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Button style (to fix missing reference) -->
+    <style name="Button">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- Optional: keep your Rounded Button style -->
+    <style name="Button.Rounded">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+</resources>

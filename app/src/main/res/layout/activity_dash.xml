@@ -1,0 +1,226 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/main_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="1dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- User Profile Icon -->
+            <ImageButton
+                android:id="@+id/btnUserProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@null"
+                android:src="@drawable/usericon"
+                android:scaleType="centerCrop"
+                android:contentDescription="User Profile"
+                android:layout_gravity="end"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Women Safety Companion"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="#222222"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="sans-serif-medium"/>
+
+            <!-- SOS Card -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_pale_pink_bg"
+                android:padding="28dp"
+                android:layout_marginBottom="36dp"
+                android:elevation="4dp">
+
+                <TextView
+                    android:id="@+id/feelingUnsafe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I feel unsafe"
+                    android:textStyle="bold"
+                    android:textColor="#222222"
+                    android:textSize="22sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <Button
+                    android:id="@+id/btnSOS"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="SOS"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#F26A7E"
+                    android:fontFamily="sans-serif-medium" />
+            </LinearLayout>
+
+            <!-- Chat Section -->
+            <TextView
+                android:id="@+id/chatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chat"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_pale_gray_bg"
+                android:padding="18dp"
+                android:layout_marginBottom="36dp"
+                android:elevation="2dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/usericon"
+                    android:layout_marginEnd="14dp" />
+
+                <TextView
+                    android:id="@+id/chatMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Hi! I'm here to help.\nHow can I assist you?"
+                    android:textColor="#222222"
+                    android:textSize="16sp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- Live Location Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Live Location"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#222222"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:background="@drawable/rounded_pale_pink_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="4dp">
+
+                <Button
+                    android:id="@+id/btnLiveLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:text="Start tracking"
+                    android:textAllCaps="false"
+                    android:textColor="#222222"
+                    android:backgroundTint="#FFF2F4F8"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Fixed Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@drawable/rounded_nav_bg"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:elevation="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navHome"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_home" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="#F26A7E"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navChat"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_chat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chat"
+                android:textColor="#222222"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/navLocation"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="#222222"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
