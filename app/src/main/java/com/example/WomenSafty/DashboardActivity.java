@@ -43,6 +43,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+
 import android.telephony.SmsManager;
 import android.content.Intent;
 
@@ -70,7 +71,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private static final String GEMINI_API_KEY = "AIzaSyAeEv7wtgoYzHXWMIO0ZerWKCYyMn-zvhI";
     private static final String GEMINI_API_URL =
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=";
+            "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=";
     private final OkHttpClient client = new OkHttpClient();
 
     private String emergencyNumber = ""; // Change as needed
@@ -305,6 +306,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
     }
+
     private void sendLocationSms(Location location) {
         if (location == null) return;
         String lat = String.valueOf(location.getLatitude());
@@ -435,6 +437,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         }
     }
+
     private String getEmergencyNumber() {
         String number = null;
         String filename = "user_data.txt"; // your JSON file
