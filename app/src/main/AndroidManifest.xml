@@ -41,7 +41,7 @@
         android:theme="@style/Theme.WomenSafty">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBJC92pUPl1bijOjLCaRMW39dBPw8f_Rkc"/>
+            android:value="Google Api Key"/>
 
         <!-- MainActivity: launcher -->
         <activity android:name=".MainActivity"
