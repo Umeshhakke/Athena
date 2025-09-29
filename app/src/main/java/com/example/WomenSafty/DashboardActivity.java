@@ -69,7 +69,7 @@ public class DashboardActivity extends AppCompatActivity {
     private boolean locationSent = false;  // Add at class level
 
 
-    private static final String GEMINI_API_KEY = "AIzaSyAlt7reXUgs0Q5H8Fn60Z9Sr_ddvu7Tujo";
+    private static final String GEMINI_API_KEY = "Your Gemini API Key";
     private static final String GEMINI_API_URL =
             "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=";
     private final OkHttpClient client = new OkHttpClient();
